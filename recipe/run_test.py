@@ -1,4 +1,5 @@
 import os
+import subprocess
 from cmdstanpy import cmdstan_path, CmdStanModel
 
 # specify locations of Stan program file and data
@@ -23,3 +24,6 @@ bernoulli_fit = bernoulli_model.sample(chains=4, data=bernoulli_data, parallel_c
 
 # summarize the results (wraps CmdStan `bin/stansummary`):
 bernoulli_fit.summary()
+
+# run pip check
+subprocess.run(['pip', 'check'])

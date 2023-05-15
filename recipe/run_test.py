@@ -10,7 +10,7 @@ bernoulli_stan = os.path.join(cmdstan_path(), 'examples', 'bernoulli', 'bernoull
 bernoulli_data = os.path.join(cmdstan_path(), 'examples', 'bernoulli', 'bernoulli.data.json')
 
 # instantiate a model; compiles the Stan program by default
-bernoulli_model = CmdStanModel(stan_file=bernoulli_stan, cpp_options={'mmacosx-version-min':"10.9"})
+bernoulli_model = CmdStanModel(stan_file=bernoulli_stan, cpp_options={'mmacosx-version-min':"10.14"})
 
 # obtain a posterior sample from the model conditioned on the data
 bernoulli_fit = bernoulli_model.sample(chains=4, data=bernoulli_data)

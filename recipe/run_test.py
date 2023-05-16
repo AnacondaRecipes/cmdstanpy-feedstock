@@ -29,6 +29,8 @@ print(r.stdout.read())
 r = subprocess.Popen('readlink -f $CONDA_BUILD_SYSROOT', shell=True, stdout=subprocess.PIPE)
 print(r.stdout.read())
 
+r = subprocess.Popen('echo $MACOSX_DEPLOYMENT_TARGET', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
 
 
 # specify locations of Stan program file and data

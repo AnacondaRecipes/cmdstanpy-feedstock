@@ -1,8 +1,11 @@
 import os
 import subprocess
 from cmdstanpy import cmdstan_path, CmdStanModel
-from cmdstanpy import rebuild_cmdstan
 
+from cmdstanpy import rebuild_cmdstan,install_cmdstan
+
+
+install_cmdstan(verbose=True)
 rebuild_cmdstan()
 
 # run pip check

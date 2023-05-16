@@ -5,7 +5,7 @@ from cmdstanpy import cmdstan_path, CmdStanModel
 # run pip check
 subprocess.run(['pip', 'check'])
 
-os.environ["CPPFLAGS"] = '-D_FORTIFY_SOURCE=2 -isystem $PREFIX/include -mmacosx-version-min=10.14'
+#os.environ["CPPFLAGS"] = '-D_FORTIFY_SOURCE=2 -isystem $PREFIX/include -mmacosx-version-min=10.14'
 
 #r=subprocess.run(['clang++ --version'],shell=True)
 r = subprocess.Popen('clang++ --version', shell=True, stdout=subprocess.PIPE)

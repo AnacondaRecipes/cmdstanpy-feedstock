@@ -5,7 +5,11 @@ from cmdstanpy import cmdstan_path, CmdStanModel
 # run pip check
 subprocess.run(['pip', 'check'])
 
-#os.environ["CPPFLAGS"] = '-D_FORTIFY_SOURCE=2 -isystem $PREFIX/include -mmacosx-version-min=10.14'
+os.environ["MACOSX_SDK_VERSION"] = '10.14'
+os.environ["MACOSX_DEPLOYMENT_TARGET"] = '10.14'
+os.environ["CPPFLAGS"] = '-D_FORTIFY_SOURCE=2 -isystem $PREFIX/include -mmacosx-version-min=10.14'
+os.environ["CONDA_BUILD_SYSROOT"] = '/opt/MacOSX10.14.sdk'
+#os.environ[""] = 10.14
 
 #r=subprocess.run(['clang++ --version'],shell=True)
 #r = subprocess.Popen('clang++ --version', shell=True, stdout=subprocess.PIPE)
@@ -25,6 +29,10 @@ print(r.stdout.read())
 
 r = subprocess.Popen('echo $MACOSX_DEPLOYMENT_TARGET', shell=True, stdout=subprocess.PIPE)
 print(r.stdout.read())
+
+
+#r = subprocess.Popen('echo $macos_min_version', shell=True, stdout=subprocess.PIPE)
+#print(r.stdout.read())
 
 
 # specify locations of Stan program file and data

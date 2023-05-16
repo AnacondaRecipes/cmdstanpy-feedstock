@@ -2,14 +2,34 @@ import os
 import subprocess
 from cmdstanpy import cmdstan_path, CmdStanModel
 
-from cmdstanpy import rebuild_cmdstan,install_cmdstan
-
-
-install_cmdstan(verbose=True)
-rebuild_cmdstan()
-
 # run pip check
 subprocess.run(['pip', 'check'])
+
+os.environ["CPPFLAGS"] = '-D_FORTIFY_SOURCE=2 -isystem $PREFIX/include -mmacosx-version-min=10.14'
+
+#r=subprocess.run(['clang++ --version'],shell=True)
+r = subprocess.Popen('clang++ --version', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read().decode('utf-8').splitlines())
+
+r = subprocess.Popen('echo $CXX', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
+
+r = subprocess.Popen('echo $CPPFLAGS', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
+
+r = subprocess.Popen('echo $SDKROOT', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
+
+r = subprocess.Popen('readlink -f $SDKROOT', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
+
+r = subprocess.Popen('echo $CONDA_BUILD_SYSROOT', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
+
+r = subprocess.Popen('readlink -f $CONDA_BUILD_SYSROOT', shell=True, stdout=subprocess.PIPE)
+print(r.stdout.read())
+
+
 
 # specify locations of Stan program file and data
 bernoulli_stan = os.path.join(cmdstan_path(), 'examples', 'bernoulli', 'bernoulli.stan')

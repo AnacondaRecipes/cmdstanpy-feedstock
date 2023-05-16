@@ -11,8 +11,8 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37 or not (osx and x86_64)]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --no-cache --ignore-installed -vvv
   entry_points:
     - install_cmdstan = cmdstanpy.install_cmdstan:main
     - install_cxx_toolchain = cmdstanpy.install_cxx_toolchain:main

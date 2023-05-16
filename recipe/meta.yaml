@@ -40,6 +40,9 @@ test:
     - cmdstanpy.utils
   requires:
     - pip
+  commands:
+    - export CONDA_BUILD_SYSROOT=/opt/MacOSX10.14.sdk  # [osx and x86_64]
+    - export CONDA_BUILD_SYSROOT=/opt/MacOSX11.1.sdk  # [osx and arm64]
 
 about:
   home: https://mc-stan.org/users/interfaces/cmdstan.html

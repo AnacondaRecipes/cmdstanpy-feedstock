@@ -1,6 +1,9 @@
 import os
 import subprocess
 from cmdstanpy import cmdstan_path, CmdStanModel
+from cmdstanpy import rebuild_cmdstan
+
+rebuild_cmdstan()
 
 # run pip check
 subprocess.run(['pip', 'check'])

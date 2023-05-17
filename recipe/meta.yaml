@@ -13,7 +13,6 @@ build:
   number: 0
   skip: true  # [py<37] 
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --no-cache --ignore-installed -vvv
-      # - echo "export SDKROOT=${CONDA_BUILD_SYSROOT}" >> "${RECIPE_DIR}/activate.sh"  # [osx]
   entry_points:
     - install_cmdstan = cmdstanpy.install_cmdstan:main
     - install_cxx_toolchain = cmdstanpy.install_cxx_toolchain:main
@@ -30,9 +29,6 @@ requirements:
     - numpy >=1.21
     - cmdstan
     - tqdm
-   # run_constrained:  # [osx]
-    #    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.14") }}  # [osx and x86_64]
-    # - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("11.1") }}  # [osx and arm64]
 
 test:
   imports:

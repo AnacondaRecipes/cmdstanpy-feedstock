@@ -1,6 +1,0 @@
-upload_channels: 
-  - "sk_test"
-channels: 
-  - "sk_test"
-build_parameters:
-  - "--suppress-variables"

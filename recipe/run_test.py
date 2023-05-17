@@ -1,12 +1,15 @@
 import os
 import subprocess
+import sys
 from cmdstanpy import cmdstan_path, CmdStanModel
 
 # run pip check
 subprocess.run(['pip', 'check'])
 
-host = os.environ["HOST"]
-if "darwin" in host:
+platform = sys.platform
+
+if platform == "darwin":
+    host = os.environ["HOST"]
     if "arm64" in host:
         os.environ["CONDA_BUILD_SYSROOT"] = '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk'
     else:

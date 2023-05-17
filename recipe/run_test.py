@@ -5,6 +5,13 @@ from cmdstanpy import cmdstan_path, CmdStanModel
 # run pip check
 subprocess.run(['pip', 'check'])
 
+host = os.environ["HOST"]
+if "darwin" in host:
+    if "arm64" in host:
+        os.environ["CONDA_BUILD_SYSROOT"] = '/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk'
+    else:
+        os.environ["CONDA_BUILD_SYSROOT"] = '/opt/MacOSX10.10.sdk'
+
 # specify locations of Stan program file and data
 bernoulli_stan = os.path.join(cmdstan_path(), 'examples', 'bernoulli', 'bernoulli.stan')
 bernoulli_data = os.path.join(cmdstan_path(), 'examples', 'bernoulli', 'bernoulli.data.json')

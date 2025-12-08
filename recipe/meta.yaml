@@ -10,8 +10,10 @@ source:
   sha256: ec416e2ce6bf9317a9edb5e105ee6f7a9c3ab19df360d57041993e90ed7c641a
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<37]
+  # Error: Bad CPU type in executable
+  skip: true  # [osx]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - install_cmdstan = cmdstanpy.install_cmdstan:main

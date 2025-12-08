@@ -12,6 +12,8 @@ source:
 build:
   number: 1
   skip: true  # [py<37]
+  # Error: Bad CPU type in executable
+  skip: true  # [osx]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - install_cmdstan = cmdstanpy.install_cmdstan:main
